@@ -21,6 +21,7 @@
 # include <math.h>
 
 # include "Libft/libft.h"
+# include "myGL/myGL.h"
 
 int				**ft_read_file(char *argv, int **matrix);
 

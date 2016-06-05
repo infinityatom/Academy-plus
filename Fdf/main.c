@@ -20,20 +20,28 @@ int		my_key_funct(int keycode)
 	return (0);
 }
 
-int		main(int argc, char **argv)
+int		ft_vertex(char ** argv)
 {
 	int		**matrix;
-	void	*mlx;
-	void	*win;
 
-	if (argc != 2)
-		return (0);
 	matrix = NULL;
 	if (!(matrix = ft_read_file(argv[1], matrix)))
 	{
 		perror("Error: ");
 		return (-1);
 	}
+	return (0);
+}
+
+int		main(int argc, char **argv)
+{
+	void	*mlx;
+	void	*win;
+
+	if (argc != 2)
+		return (-1);
+	if (ft_vertex(argv) == -1)
+		return (-1);
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, 400, 400, "mlx 42");
 
