@@ -20,9 +20,7 @@ all: $(NAME)
 $(NAME): $(OBJ) $(HEAD)
 	make -C Libft/
 	make -C myGL/
-	$(CC) $(CFLAGS) -I ./Libft -c $(SRC)
-	$(CC) $(CFLAGS) -I ./myGL -c $(SRC)
-	$(CC) -o $(NAME) $(OBJ) -lm -L Libft/ -lft -lmlx -framework OpenGL -framework AppKit
+	$(CC) -o $(NAME) $(OBJ) -lm -L Libft/ -lft -L myGL/ -lmyGL -lmlx -framework OpenGL -framework AppKit
 
 .PHONY: clean fclean
 

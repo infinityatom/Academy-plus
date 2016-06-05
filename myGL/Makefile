@@ -1,4 +1,4 @@
-NAME = myGL.a
+NAME = libmyGL.a
 
 FLAGS = -Wall -Wextra -Werror
 
