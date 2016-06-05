@@ -42,6 +42,9 @@ int		main(int argc, char **argv)
 		return (-1);
 	if (ft_vertex(argv) == -1)
 		return (-1);
+	//node camera = node_default;
+	//vector3_print(&camera.coord);
+	//vector3_print(&camera.rotation);
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, 400, 400, "mlx 42");
 
