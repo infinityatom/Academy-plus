@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strequ.c                                        :+:      :+:    :+:   */
+/*   strequ.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbodnare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/27 18:57:48 by rbodnare          #+#    #+#             */
-/*   Updated: 2016/05/27 18:57:54 by rbodnare         ###   ########.fr       */
+/*   Created: 2015/10/31 19:07:52 by rbodnare          #+#    #+#             */
+/*   Updated: 2015/12/21 18:56:44 by rbodnare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,8 @@
 
 int		ft_strequ(char const *s1, char const *s2)
 {
-	char *str1;
-	char *str2;
-
-	str1 = (char *)s1;
-	str2 = (char *)s2;
-	if (str1 && str2)
-	{
-		if (ft_strcmp(str1, str2) == 0)
+	if (s1 && s2)
+		if (ft_strcmp(s1, s2) == 0)
 			return (1);
-		else
-			return (0);
-	}
 	return (0);
 }

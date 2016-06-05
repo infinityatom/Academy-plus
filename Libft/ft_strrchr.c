@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   strrchr.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbodnare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/27 18:57:48 by rbodnare          #+#    #+#             */
-/*   Updated: 2016/05/27 18:57:54 by rbodnare         ###   ########.fr       */
+/*   Created: 2015/10/31 19:11:01 by rbodnare          #+#    #+#             */
+/*   Updated: 2015/10/31 19:11:02 by rbodnare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,14 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	char	*str;
-	size_t	len;
-	int		counter;
+	char		ch;
+	const char	*found;
 
-	str = (char*)s;
-	counter = 0;
-	if (str)
-	{
-		len = ft_strlen(str);
-		while (counter < (int)len)
-		{
-			counter++;
-			str++;
-		}
-		while (counter >= 0)
-		{
-			if (str[0] == (char)c)
-				return (str);
-			str--;
-			counter--;
-		}
-	}
-	return (NULL);
+	ch = (char)c;
+	found = 0;
+	if (!ch)
+		return (char *)s + ft_strlen(s);
+	while ((s = ft_strchr(s, c)))
+		found = s++;
+	return ((char *)found);
 }

@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   strcpy.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbodnare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/27 18:57:48 by rbodnare          #+#    #+#             */
-/*   Updated: 2016/05/27 18:57:54 by rbodnare         ###   ########.fr       */
+/*   Created: 2015/10/31 19:07:13 by rbodnare          #+#    #+#             */
+/*   Updated: 2015/10/31 19:07:14 by rbodnare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char *ft_strcpy(char *dst, const char *src)
+char	*ft_strcpy(char *dst, const char *src)
 {
-	int i;
+	char	*cp;
 
-	i = 0;
-	while (src[i] != '\0')
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
+	cp = dst;
+	while ((*cp++ = *src++))
+		;
 	return (dst);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   strncat.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbodnare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/27 18:57:48 by rbodnare          #+#    #+#             */
-/*   Updated: 2016/05/27 18:57:54 by rbodnare         ###   ########.fr       */
+/*   Created: 2015/10/31 19:09:29 by rbodnare          #+#    #+#             */
+/*   Updated: 2015/12/21 20:24:12 by rbodnare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,19 @@
 
 char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
-	int		i;
+	size_t	i;
 	size_t	j;
-	char	*str1;
-	char	*str2;
 
-	if (!s1 || !s2)
-		return (NULL);
-	str1 = (char*)s1;
-	str2 = (char*)s2;
 	i = 0;
 	j = 0;
-	while (str1[i] != '\0')
+	while (s1[i])
 		i++;
-	while (str2[j] != '\0' && j < n)
+	while (s2[j] && j < n)
 	{
-		str1[i + j] = str2[j];
+		s1[i] = s2[j];
 		j++;
+		i++;
 	}
-	str1[i + j] = '\0';
-	return (str1);
+	s1[i] = '\0';
+	return (s1);
 }

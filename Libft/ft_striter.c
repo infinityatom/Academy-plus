@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striter.c                                       :+:      :+:    :+:   */
+/*   striter.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbodnare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/27 18:57:48 by rbodnare          #+#    #+#             */
-/*   Updated: 2016/05/27 18:57:54 by rbodnare         ###   ########.fr       */
+/*   Created: 2015/10/31 19:08:14 by rbodnare          #+#    #+#             */
+/*   Updated: 2015/12/21 18:44:35 by rbodnare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_striter(char *s, void (*f)(char *))
+void	ft_striter(char *s, void (*f)(char *))
 {
-	char			*str;
-	unsigned int	counter;
-
-	str = (char *)s;
-	if (str && f)
-	{
-		counter = 0;
-		while (str[counter])
-		{
-			(*f)(&str[counter]);
-			counter++;
-		}
-	}
+	if (s && f)
+		while (*s)
+			f(s++);
 }

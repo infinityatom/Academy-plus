@@ -1,77 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   itoa.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbodnare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/27 18:57:48 by rbodnare          #+#    #+#             */
-/*   Updated: 2016/05/27 18:57:54 by rbodnare         ###   ########.fr       */
+/*   Created: 2015/10/31 18:59:31 by rbodnare          #+#    #+#             */
+/*   Updated: 2015/10/31 18:59:32 by rbodnare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char				*ft_nbrstr(int n, char *str, unsigned int pos)
+static char		*extension(unsigned int weight, char *str, int n, int i)
 {
-	unsigned int	nb;
-
-	pos--;
-	if (n < 0)
+	while (weight >= 1)
 	{
-		nb = -n;
-		str[0] = '-';
+		str[i++] = (n / weight % 10) + 48;
+		weight /= 10;
 	}
-	else
-		nb = n;
-	if (nb >= 10)
-	{
-		ft_nbrstr((nb / 10), str, pos);
-		str[pos] = ((nb % 10) + '0');
-	}
-	else
-		str[pos] = (nb + '0');
+	str[i] = '\0';
 	return (str);
 }
 
-static unsigned int		ft_lennbr(int n)
+char			*ft_itoa(int n)
 {
-	unsigned int	count;
-	unsigned int	nb;
-
-	count = 0;
-	if (n < 0)
-	{
-		nb = (unsigned int)-n;
-		count++;
-	}
-	else
-		nb = (unsigned int)n;
-	while (nb > 0)
-	{
-		nb = nb / 10;
-		count++;
-	}
-	return (count);
-}
-
-char					*ft_itoa(int n)
-{
-	unsigned int	len;
+	int				len;
+	int				i;
+	unsigned int	weight;
 	char			*str;
 
-	len = ft_lennbr(n);
-	if (n == 0)
+	len = 0;
+	i = 0;
+	weight = 1;
+	if (n < 0)
 	{
-		if (!(str = ft_strnew(1)))
-			return (NULL);
-		str[0] = '0';
+		len = 1;
+		n = -n;
+		i = 1;
 	}
-	else
+	while (n / weight > 9)
 	{
-		if (!(str = ft_strnew(len)))
-			return (NULL);
-		str = ft_nbrstr(n, str, len);
+		weight *= 10;
+		len++;
 	}
-	return (str);
+	str = (char*)malloc(sizeof(char) * (len + 1));
+	if (str == NULL)
+		return (NULL);
+	if (i > 0)
+		str[0] = '-';
+	return (extension(weight, str, n, i));
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bzero.c                                            :+:      :+:    :+:   */
+/*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbodnare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -20,6 +20,8 @@
 # include <fcntl.h>
 # include <math.h>
 
-# include "Libft/includes/libft.h"
+# include "Libft/libft.h"
+
+int				**ft_read_file(char *argv, int **matrix);
 
 #endif

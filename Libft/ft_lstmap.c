@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   lstmap.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbodnare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/27 18:57:48 by rbodnare          #+#    #+#             */
-/*   Updated: 2016/05/27 18:57:54 by rbodnare         ###   ########.fr       */
+/*   Created: 2015/10/31 19:01:14 by rbodnare          #+#    #+#             */
+/*   Updated: 2015/10/31 19:01:16 by rbodnare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,20 @@
 
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	t_list *new_lst;
-	t_list *new_elem;
-	t_list *prev_elem;
+	t_list	*new;
+	t_list	*last;
 
-	new_lst = NULL;
-	if (lst && (*f))
+	last = f(lst);
+	new = last;
+	if (new == NULL)
+		return (NULL);
+	while (lst->next)
 	{
-		new_lst = (*f)(lst);
-		prev_elem = new_lst;
 		lst = lst->next;
-		while (lst)
-		{
-			new_elem = (*f)(lst);
-			prev_elem->next = new_elem;
-			prev_elem = new_elem;
-			lst = lst->next;
-		}
-		prev_elem->next = NULL;
+		last->next = f(lst);
+		if (last->next == NULL)
+			return (NULL);
+		last = last->next;
 	}
-	return (new_lst);
+	return (new);
 }

@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   memcpy.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbodnare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/27 18:57:48 by rbodnare          #+#    #+#             */
-/*   Updated: 2016/05/27 18:57:54 by rbodnare         ###   ########.fr       */
+/*   Created: 2015/10/31 19:02:44 by rbodnare          #+#    #+#             */
+/*   Updated: 2015/10/31 19:02:46 by rbodnare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void *ft_memcpy(void *dst, const void *src, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	size_t	counter;
-	char	*str_dst;
-	char	*str_src;
+	char	*dst1;
+	char	*src1;
 
-	if (!dst || !src)
-		return (NULL);
-	counter = 0;
-	str_dst = (char *)dst;
-	str_src = (char *)src;
-	while (counter < n)
+	dst1 = (char*)dst;
+	src1 = (char*)src;
+	if (n & 1)
 	{
-		str_dst[counter] = str_src[counter];
-		counter++;
+		dst1[0] = src1[0];
+		dst1 += 1;
+		src1 += 1;
 	}
-	return ((void*)dst);
+	n /= 2;
+	while (n--)
+	{
+		dst1[0] = src1[0];
+		dst1[1] = src1[1];
+		dst1 += 2;
+		src1 += 2;
+	}
+	return (dst);
 }

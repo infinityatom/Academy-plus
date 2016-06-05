@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   strsub.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbodnare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/27 18:57:48 by rbodnare          #+#    #+#             */
-/*   Updated: 2016/05/27 18:57:54 by rbodnare         ###   ########.fr       */
+/*   Created: 2015/10/31 19:11:46 by rbodnare          #+#    #+#             */
+/*   Updated: 2015/10/31 19:11:47 by rbodnare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,21 @@
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	char			*str;
-	char			*str_new;
-	unsigned int	counter;
+	unsigned int	i;
+	char			*a;
 
-	if (!(str_new = ft_strnew(len)) || !s)
+	i = 0;
+	if (s == NULL)
 		return (NULL);
-	str = (char *)s;
-	counter = 0;
-	while (counter < len)
+	a = (char*)malloc(sizeof(char) * (len + 1));
+	if (a == NULL)
+		return (NULL);
+	while (len && s[start + i])
 	{
-		str_new[counter] = str[start];
-		start++;
-		counter++;
+		a[i] = s[start + i];
+		len--;
+		i++;
 	}
-	return (str_new);
+	a[i] = '\0';
+	return (a);
 }

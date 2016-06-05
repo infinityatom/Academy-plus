@@ -1,41 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   strnstr.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbodnare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/27 18:57:48 by rbodnare          #+#    #+#             */
-/*   Updated: 2016/05/27 18:57:54 by rbodnare         ###   ########.fr       */
+/*   Created: 2015/10/31 19:10:43 by rbodnare          #+#    #+#             */
+/*   Updated: 2015/10/31 19:10:44 by rbodnare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *s1, const char *s2, size_t n)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	size_t	i;
-	size_t	j;
-	char	*str;
+	int little_size;
+	int big_size;
+	int cursor;
+	int iterator;
+	int ok;
 
-	if (s1 && s2)
+	if (*little == '\0')
+		return ((char*)big);
+	cursor = -1;
+	little_size = ft_strlen(little);
+	big_size = ft_strlen(big);
+	while (++cursor <= big_size - little_size)
 	{
-		i = 0;
-		j = 0;
-		if (!*s2)
-			return ((char*)s1);
-		while (s1[i] && i < n)
-		{
-			while (s1[i] != s2[j] && s1[i])
-				i++;
-			str = (char*)&(s1[i]);
-			while (s1[i] == s2[j] && s1[i] && s2[j] && i < n)
-				i++, j++;
-			if (!s2[j])
-				return (str);
-			else
-				j = 0;
-		}
+		if ((size_t)(cursor + little_size) > len)
+			return (NULL);
+		iterator = -1;
+		ok = 1;
+		while (++iterator < little_size)
+			if (big[cursor + iterator] != little[iterator])
+				ok = 0;
+		if (ok)
+			return ((char *)&big[cursor]);
 	}
 	return (NULL);
 }

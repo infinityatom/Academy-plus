@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   striteri.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbodnare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/27 18:57:48 by rbodnare          #+#    #+#             */
-/*   Updated: 2016/05/27 18:57:54 by rbodnare         ###   ########.fr       */
+/*   Created: 2015/10/31 19:08:20 by rbodnare          #+#    #+#             */
+/*   Updated: 2015/12/21 18:45:36 by rbodnare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,10 @@
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	char			*str;
-	unsigned int	counter;
+	unsigned int	i;
 
-	str = (char *)s;
-	if (str && f)
-	{
-		counter = 0;
-		while (str[counter])
-		{
-			(*f)(counter, &str[counter]);
-			counter++;
-		}
-	}
+	i = 0;
+	if (s && f)
+		while (*s)
+			f(i++, s++);
 }

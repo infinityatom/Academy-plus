@@ -1,14 +1,15 @@
 NAME = fdf
 PATH_SRC = ./
 PATH_OBJ = ./
-PATH_INC = ./Libft/includes/
+PATH_INC = ./Libft
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 HEAD = fdf.h
 
-SRC = main.c
+SRC =	main.c			\
+		ft_read_file.c
 
 OBJ = $(patsubst %.c,%.o,$(addprefix $(PATH_SRC), $(SRC)))
 

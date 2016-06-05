@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   strnew.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbodnare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/27 18:57:48 by rbodnare          #+#    #+#             */
-/*   Updated: 2016/05/27 18:57:54 by rbodnare         ###   ########.fr       */
+/*   Created: 2015/10/31 19:10:31 by rbodnare          #+#    #+#             */
+/*   Updated: 2015/10/31 19:10:32 by rbodnare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 char	*ft_strnew(size_t size)
 {
-	char *str;
+	void	*a;
 
-	if (!(str = (char *)ft_memalloc(size + 1)))
+	a = (char*)malloc(size);
+	if (a == NULL)
 		return (NULL);
-	return (str);
+	ft_memset(a, '\0', size);
+	return (a);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdel.c                                        :+:      :+:    :+:   */
+/*   lstdel.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbodnare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/27 18:57:48 by rbodnare          #+#    #+#             */
-/*   Updated: 2016/05/27 18:57:54 by rbodnare         ###   ########.fr       */
+/*   Created: 2015/10/31 19:00:26 by rbodnare          #+#    #+#             */
+/*   Updated: 2015/10/31 19:00:28 by rbodnare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,16 @@
 
 void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	if (*alst && del)
+	t_list	*lstnext;
+	t_list	*lst;
+
+	lst = *alst;
+	while (lst)
 	{
-		ft_lstdel(&(*alst)->next, del);
-		ft_lstdelone(alst, del);
+		lstnext = lst->next;
+		del(lst->content, lst->content_size);
+		free(lst);
+		lst = lstnext;
 	}
+	*alst = NULL;
 }

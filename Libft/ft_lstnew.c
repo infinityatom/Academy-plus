@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   lstnew.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbodnare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/27 18:57:48 by rbodnare          #+#    #+#             */
-/*   Updated: 2016/05/27 18:57:54 by rbodnare         ###   ########.fr       */
+/*   Created: 2015/10/31 19:01:24 by rbodnare          #+#    #+#             */
+/*   Updated: 2015/10/31 19:01:25 by rbodnare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,24 @@
 
 t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	t_list	*list;
+	t_list	*newlist;
 
-	if (!(list = (t_list*)ft_memalloc(sizeof(t_list))))
+	newlist = (t_list *)malloc(sizeof(t_list));
+	if (newlist == NULL)
 		return (NULL);
-	if (content)
+	if (content == NULL)
 	{
-		if (!(list->content = (void*)ft_memalloc(content_size)))
-			return (NULL);
-		ft_memcpy(list->content, content, content_size);
-		list->content_size = content_size;
+		newlist->content = NULL;
+		newlist->content_size = 0;
 	}
 	else
 	{
-		list->content = NULL;
-		list->content_size = 0;
+		newlist->content = malloc(sizeof(content));
+		if (newlist->content == NULL)
+			return (NULL);
+		ft_memcpy(newlist->content, content, sizeof(content));
+		newlist->content_size = content_size;
 	}
-	list->next = NULL;
-	return (list);
+	newlist->next = NULL;
+	return (newlist);
 }
