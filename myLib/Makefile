@@ -1,9 +1,10 @@
-NAME = libmylib.a
+NAME = mylib.a
 
 FLAGS = -Wall -Wextra -Werror
 
 SRC =					\
 	ft_memcpy.c			\
+	ft_printf.c			\
 	ft_realloc.c		\
 	ft_strlen.c
 
@@ -21,5 +22,11 @@ clean:
 
 fclean:	clean
 		@rm -f $(NAME)
+
+test: all
+		@gcc -I. -o test test.c mylib.a
+		@make fclean
+		@./test
+		@rm test
 
 re:	fclean all

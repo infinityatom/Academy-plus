@@ -16,6 +16,7 @@
 # include <stdlib.h>
 
 void	*ft_memcpy(void *dst, const void *src, size_t n);
+int		ft_printf(const char * restrict format, ...);
 void	*ft_realloc(void *ptr, size_t size_o, size_t size_n);
 size_t	ft_strlen(const char *s);
 
