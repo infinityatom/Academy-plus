@@ -2,10 +2,15 @@ NAME = mylib.a
 
 FLAGS = -Wall -Wextra -Werror
 
-SRC =					\
-	ft_memcpy.c			\
-	ft_printf.c			\
-	ft_realloc.c		\
+SRC =				\
+	ft_ftoa.c		\
+	ft_itoa.c		\
+	ft_memcpy.c		\
+	ft_printf.c		\
+	ft_putfloat.c	\
+	ft_putnbr.c		\
+	ft_putstr.c		\
+	ft_realloc.c	\
 	ft_strlen.c
 
 OBJ = $(SRC:.c=.o)

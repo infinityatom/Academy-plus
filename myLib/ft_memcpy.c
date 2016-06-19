@@ -1,6 +1,6 @@
-#include "mylib.h"
+#include <stddef.h>
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	*ft_memcpy(void *dst, void const *src, size_t n)
 {
 	char	*dst1;
 	char	*src1;
