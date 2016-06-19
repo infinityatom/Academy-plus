@@ -6,7 +6,14 @@
 
 int		main(void)
 {
-	printf("hello world\n");
+	printf("%0 10d\n", 69);
+	//write(1, L"Hello world\n", 12 * 4);
+	//printf("%lu\n", sizeof(char));
+	//ft_printf("hello %yorld\n");
+	printf("%s\n", "Hello world");
+	printf("%ls\n", L"Hello world");
+	//printf("%c\n", 'a');
+	//printf("%C\n", 'a');
 	//printf("%d\n", ft_printf("ana are: %ydar nu\n"));
 	//printf("%d\n", printf("ana are: %ydar nu\n"));
 	//printf("%d\n", ft_printf("ana are: %f\n", 21533.443214));

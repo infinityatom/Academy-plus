@@ -2,24 +2,16 @@
 #include <stdarg.h>
 #include <unistd.h>
 
-static int	ft_putchar(char const c)
-{
-	write(1, &c, 1);
-	return (1);
-}
-
 static int	arg_process(char **ptr, va_list *ap)
 {
-	*ptr += 1;
-	if (**ptr == 'c')
-		return (ft_putchar(va_arg(*ap, int)));
-	if (**ptr == 's')
-		return (ft_putstr(va_arg(*ap, char *)));
-	if (**ptr == 'd')
-		return (ft_putnbr(va_arg(*ap, int)));
-	if (**ptr == 'f')
-		return (ft_putfloat(va_arg(*ap, double)));
-	*ptr -= 1;
+	while (extract_flags(**ptr))
+		*ptr += 1;
+	*ptr += extract_width(**ptr);
+	*ptr += extract_precision(**ptr);
+	*ptr += extract_length(**ptr);
+	if (extract_specifier(**ptr) == 0)
+		return (0);
+	ap = NULL;
 	return (0);
 }
 
@@ -37,7 +29,7 @@ static int	analyse(char const *format, va_list *ap)
 		if (*ptr2 == '%')
 		{
 			write(1, ptr1, ptr2 - ptr1);
-			len += arg_process(&ptr2, ap);
+			len += arg_process(&(ptr2 + 1), ap);
 			ptr1 = ++ptr2;
 		}
 		else

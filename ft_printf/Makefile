@@ -7,9 +7,11 @@ SRC =				\
 	ft_itoa.c		\
 	ft_memcpy.c		\
 	ft_printf.c		\
+	ft_putchar.c	\
 	ft_putfloat.c	\
 	ft_putnbr.c		\
 	ft_putstr.c		\
+	ft_putwchar.c	\
 	ft_realloc.c	\
 	ft_strlen.c
 
