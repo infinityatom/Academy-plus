@@ -1,6 +1,6 @@
 #include <stddef.h>
 
-size_t	ft_strlen(char const *s)
+size_t	ft_strlen(wchar_t *s)
 {
 	size_t	i;
 

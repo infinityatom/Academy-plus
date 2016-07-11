@@ -6,6 +6,7 @@
 
 int		main(void)
 {
+	ft_printf("Andrea %s %s\n", "are", "mere");
 	//printf("%d\n", ft_printf("ana are: %ydar nu\n"));
 	//printf("%d\n", printf("ana are: %ydar nu\n"));
 	//printf("%d\n", ft_printf("ana are: %f\n", 21533.443214));

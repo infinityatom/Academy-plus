@@ -1,10 +1,10 @@
 #include <stdlib.h>
 
-char	*ft_itoa(int n)
+wchar_t	*ft_itoa(int n)
 {
 	size_t	size_ret;
-	char	*ret;
-	char	sign;
+	wchar_t	*ret;
+	wchar_t	sign;
 	int		temp_n;
 
 	sign = (n < 0) ? -1 : 1;
@@ -13,7 +13,7 @@ char	*ft_itoa(int n)
 	while ((n = n / 10))
 		size_ret++;
 	n = temp_n;
-	if ((ret = (char *)malloc(sizeof(char) * size_ret--)) == NULL)
+	if ((ret = (wchar_t *)malloc(sizeof(wchar_t) * size_ret--)) == NULL)
 		return (NULL);
 	ret[size_ret--] = '\0';
 	ret[size_ret--] = sign * (n % 10) + '0';

@@ -4,15 +4,21 @@
 
 static int	arg_process(char **ptr, va_list *ap)
 {
-	while (extract_flags(**ptr))
-		*ptr += 1;
-	*ptr += extract_width(**ptr);
-	*ptr += extract_precision(**ptr);
-	*ptr += extract_length(**ptr);
-	if (extract_specifier(**ptr) == 0)
+	t_arg	arg = {};
+	int		i;
+
+	arg.specifier = NULL;
+	*ptr += extract_flags(*ptr, &arg);
+	*ptr += extract_width(*ptr, &arg);
+	*ptr += extract_precision(*ptr, &arg);
+	*ptr += extract_length(*ptr, &arg);
+	arg.len = extract_specifier(*ptr, &arg, ap);
+	if (arg.len == 0)
 		return (0);
-	ap = NULL;
-	return (0);
+	*ptr += 1;
+	i = print_arg(&arg);
+	free(arg.specifier);
+	return (i);
 }
 
 static int	analyse(char const *format, va_list *ap)
@@ -29,7 +35,7 @@ static int	analyse(char const *format, va_list *ap)
 		if (*ptr2 == '%')
 		{
 			write(1, ptr1, ptr2 - ptr1);
-			len += arg_process(&(ptr2 + 1), ap);
+			len += arg_process(&ptr2 + 1, ap);
 			ptr1 = ++ptr2;
 		}
 		else

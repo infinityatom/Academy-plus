@@ -3,7 +3,7 @@
 
 # include <stdlib.h>
 
-typedef enum { false, true } bool;
+typedef enum { false = 0, true = 1 } bool;
 
 typedef struct	s_arg
 {
@@ -14,15 +14,18 @@ typedef struct	s_arg
 	bool		zero;
 	size_t		width;
 	size_t		precision;
+	wchar_t		*specifier;
+	size_t		len;
+	char		type;
 	enum {
-		none,
+		null,
 		hh,
 		h,
 		l,
 		ll,
 		j,
 		z
-	}			length;
+	}	length;
 }				t_arg;
 
 char	*ft_ftoa(float fl, int afterpoint);
