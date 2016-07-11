@@ -13,7 +13,7 @@ int		handle_int(t_arg *arg, int n)
 		size_ret++;
 	n = temp_n;
 	if (!(arg->specifier = (wchar_t *)malloc(sizeof(wchar_t) * size_ret--)))
-		return (NULL);
+		return (0);
 	arg->specifier[size_ret--] = '\0';
 	arg->specifier[size_ret--] = sign * (n % 10) + '0';
 	while ((n = n / 10))
@@ -36,7 +36,7 @@ int		handle_lint(t_arg *arg, long int n)
 		size_ret++;
 	n = temp_n;
 	if (!(arg->specifier = (wchar_t *)malloc(sizeof(wchar_t) * size_ret--)))
-		return (NULL);
+		return (0);
 	arg->specifier[size_ret--] = '\0';
 	arg->specifier[size_ret--] = sign * (n % 10) + '0';
 	while ((n = n / 10))
@@ -59,7 +59,7 @@ int		handle_llint(t_arg *arg, long long int n)
 		size_ret++;
 	n = temp_n;
 	if (!(arg->specifier = (wchar_t *)malloc(sizeof(wchar_t) * size_ret--)))
-		return (NULL);
+		return (0);
 	arg->specifier[size_ret--] = '\0';
 	arg->specifier[size_ret--] = sign * (n % 10) + '0';
 	while ((n = n / 10))
@@ -82,7 +82,7 @@ int		handle_intmax_t(t_arg *arg, intmax_t n)
 		size_ret++;
 	n = temp_n;
 	if (!(arg->specifier = (wchar_t *)malloc(sizeof(wchar_t) * size_ret--)))
-		return (NULL);
+		return (0);
 	arg->specifier[size_ret--] = '\0';
 	arg->specifier[size_ret--] = sign * (n % 10) + '0';
 	while ((n = n / 10))
@@ -95,22 +95,18 @@ int		handle_intmax_t(t_arg *arg, intmax_t n)
 int		handle_size_t(t_arg *arg, size_t n, int base, wchar_t a)
 {
 	size_t	size_ret;
-	wchar_t	sign;
 	size_t	temp_n;
 
-	sign = (n < 0) ? -1 : 1;
-	size_ret = 2 + (n < 0);
+	size_ret = 2;
 	temp_n = n;
 	while ((n = n / base))
 		size_ret++;
 	n = temp_n;
 	if (!(arg->specifier = (wchar_t *)malloc(sizeof(wchar_t) * size_ret--)))
-		return (NULL);
+		return (0);
 	arg->specifier[size_ret--] = '\0';
-	arg->specifier[size_ret--] = sign * (n%base<10?n%base+'0':n%base-10+a);
+	arg->specifier[size_ret--] = n % base < 10 ? n%base+'0' : n%base-10+a;
 	while ((n = n / base))
-		arg->specifier[size_ret--] = sign * (n%base<10?n%base+'0':n%base-10+a);
-	if (sign < 0)
-		arg->specifier[size_ret] = '-';
+		arg->specifier[size_ret--] = n % base < 10 ? n%base+'0' : n%base-10+a;
 	return (ft_strlen(arg->specifier));
 }

@@ -16,7 +16,7 @@ int		handle_char(t_arg *arg, int n)
 	return (1);
 }
 
-int		handle_wchar_t(t_arg *arg, wchar_t n)
+int		handle_wchar_t(t_arg *arg, wchar_t *n)
 {
 	int		i;
 
@@ -46,25 +46,25 @@ int		handle_str(t_arg *arg, char *n)
 	return (i);
 }
 
-int		handle_pointer(t_arg *arg, void *n)
+int		handle_pointer(t_arg *arg, void *nr)
 {
 	size_t	size_ret;
-	wchar_t	sign;
 	size_t	temp_n;
+	size_t	n;
 
-	sign = (n < 0) ? -1 : 1;
-	size_ret = 2 + (n < 0);
+	n = (size_t)nr;
+	size_ret = 2;
 	temp_n = n;
 	while ((n = n / 16))
 		size_ret++;
 	size_ret += 2;
 	n = temp_n;
 	if (!(arg->specifier = (wchar_t *)malloc(sizeof(wchar_t) * (size_ret--))))
-		return (NULL);
+		return (0);
 	arg->specifier[size_ret--] = '\0';
-	arg->specifier[size_ret--] = sign * (n%16<10?n%16+'0':n%16-10+'a');
+	arg->specifier[size_ret--] = n % 16 < 10 ? n%16+'0' : n%16-10+'a';
 	while ((n = n / 16))
-		arg->specifier[size_ret--] = sign * (n%16<10?n%16+'0':n%16-10+'a');
+		arg->specifier[size_ret--] = n % 16 < 10 ? n%16+'0' : n%16-10+'a';
 	arg->specifier[0] = '0';
 	arg->specifier[1] = 'x';
 	return (ft_strlen(arg->specifier));

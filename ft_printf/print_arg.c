@@ -1,5 +1,7 @@
 #include "ft_printf.h"
+#include <unistd.h>
 
+/*
 static void	flags()
 {
 	if (arg->left_justify && (arg->type == ''))
@@ -8,6 +10,7 @@ static void	flags()
 	if (arg->hastag && (arg->type == ''))
 	if (arg->zero && (arg->type == ''))
 }
+*/
 
 static int	print_wchar_t(wchar_t *str)
 {
@@ -21,6 +24,7 @@ static int	print_wchar_t(wchar_t *str)
 	}
 	return (i);
 }
+
 
 int		print_arg(t_arg *arg)
 {

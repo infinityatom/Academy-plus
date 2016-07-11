@@ -1,5 +1,4 @@
 #include "ft_printf.h"
-#include <stdarg.h>
 #include <unistd.h>
 
 static int	arg_process(char **ptr, va_list *ap)

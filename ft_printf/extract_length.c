@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-static int	extra(*ptr)
+static int	extra(char *ptr, t_arg *arg)
 {
 	if (*ptr == 'h')
 	{
@@ -37,5 +37,5 @@ int			extract_length(char *ptr, t_arg *arg)
 		arg->length = z;
 		return (1);
 	}
-	return (extra(ptr));
+	return (extra(ptr, arg));
 }
