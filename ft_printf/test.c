@@ -6,12 +6,21 @@
 
 int		main(void)
 {
-	printf("%0 10d\n", 69);
+
+	//printf("%d\n", ft_printf("\"%S\"\n", L"31132001rewrdc"));
+	//int		*ptr = NULL; printf("%d\n", ft_printf("\"%p\"\n", &ptr));
+	//printf("%d\n", ft_printf("\"%c\"\n", 'h'));
+	//printf("%d\n", ft_printf("\"%C\"\n", 'h'));
+	//printf("%d\n", ft_printf("\"%d\"\n", 2013));
+	//printf("%d\n", ft_printf("\"%D\"\n", 2013));
+
+///////////////////////////////////////////////////
+	//printf("%0 10d\n", 69);
 	//write(1, L"Hello world\n", 12 * 4);
 	//printf("%lu\n", sizeof(char));
 	//ft_printf("hello %yorld\n");
-	printf("%s\n", "Hello world");
-	printf("%ls\n", L"Hello world");
+	//printf("%s\n", "Hello world");
+	//printf("%ls\n", L"Hello world");
 	//printf("%c\n", 'a');
 	//printf("%C\n", 'a');
 	//printf("%d\n", ft_printf("ana are: %ydar nu\n"));

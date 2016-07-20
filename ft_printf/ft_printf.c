@@ -1,5 +1,6 @@
 #include "ft_printf.h"
 #include <unistd.h>
+#include <stdio.h>
 
 static int	arg_process(char **ptr, va_list *ap)
 {
@@ -14,7 +15,6 @@ static int	arg_process(char **ptr, va_list *ap)
 	arg.len = extract_specifier(*ptr, &arg, ap);
 	if (arg.len == 0)
 		return (0);
-	*ptr += 1;
 	i = print_arg(&arg);
 	free(arg.specifier);
 	return (i);
@@ -33,8 +33,8 @@ static int	analyse(char const *format, va_list *ap)
 	{
 		if (*ptr2 == '%')
 		{
-			write(1, ptr1, ptr2 - ptr1);
-			len += arg_process(&ptr2 + 1, ap);
+			write(1, ptr1, ptr2++ - ptr1);
+			len += arg_process(&ptr2, ap);
 			ptr1 = ++ptr2;
 		}
 		else

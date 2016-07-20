@@ -63,7 +63,7 @@ int		extract_specifier(char *ptr, t_arg *arg, va_list *ap)
 	}
 	if (*ptr == 's' || *ptr == 'S')
 	{
-		if (arg->length == l)
+		if (arg->length == l || *ptr == 'S')
 			return (handle_wchar_t(arg, va_arg(*ap, wchar_t *)));
 		else
 			return (handle_str(arg, va_arg(*ap, char *)));

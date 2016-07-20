@@ -19,30 +19,38 @@ int		handle_char(t_arg *arg, int n)
 int		handle_wchar_t(t_arg *arg, wchar_t *n)
 {
 	int		i;
+	int		j;
 
 	i = 0;
 	while (n[i] != '\0')
 		i++;
-	arg->specifier = (wchar_t *)malloc(sizeof(wchar_t) * i + 1);
+	arg->specifier = (wchar_t *)malloc(sizeof(wchar_t) * (i + 1));
 	arg->specifier[i] = '\0';
-	i = 0;
-	while (n[i] != '\0')
-		arg->specifier[i] = n[i];
+	j = 0;
+	while (j < i)
+	{
+		arg->specifier[j] = n[j];
+		j++;
+	}
 	return (i);
 }
 
 int		handle_str(t_arg *arg, char *n)
 {
 	int		i;
+	int		j;
 
 	i = 0;
 	while (n[i] != '\0')
 		i++;
-	arg->specifier = (wchar_t *)malloc(sizeof(wchar_t) * i + 1);
+	arg->specifier = (wchar_t *)malloc(sizeof(wchar_t) * (i + 1));
 	arg->specifier[i] = '\0';
-	i = 0;
-	while (n[i] != '\0')
-		arg->specifier[i] = (wchar_t)n[i];
+	j = 0;
+	while (j < i)
+	{
+		arg->specifier[j] = (wchar_t)n[j];
+		j++;
+	}
 	return (i);
 }
 
