@@ -6,7 +6,10 @@
 
 int		main(void)
 {
+	
+//////////////////////////////////////////////////////////////////////
 
+	//printf("%d\n", ft_printf("\"%%\"\n"));
 	//printf("%d\n", ft_printf("\"%S\"\n", L"31132001rewrdc"));
 	//int		*ptr = NULL; printf("%d\n", ft_printf("\"%p\"\n", &ptr));
 	//printf("%d\n", ft_printf("\"%c\"\n", 'h'));
@@ -14,7 +17,6 @@ int		main(void)
 	//printf("%d\n", ft_printf("\"%d\"\n", 2013));
 	//printf("%d\n", ft_printf("\"%D\"\n", 2013));
 
-///////////////////////////////////////////////////
 	//printf("%0 10d\n", 69);
 	//write(1, L"Hello world\n", 12 * 4);
 	//printf("%lu\n", sizeof(char));

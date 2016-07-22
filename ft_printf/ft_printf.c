@@ -12,6 +12,8 @@ static int	arg_process(char **ptr, va_list *ap)
 	*ptr += extract_width(*ptr, &arg);
 	*ptr += extract_precision(*ptr, &arg);
 	*ptr += extract_length(*ptr, &arg);
+	if (**ptr == '%')
+		return (write(1, *ptr, 1));
 	arg.len = extract_specifier(*ptr, &arg, ap);
 	if (arg.len == 0)
 		return (0);
