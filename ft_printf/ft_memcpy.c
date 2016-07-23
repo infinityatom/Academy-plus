@@ -1,25 +1,11 @@
 #include <stddef.h>
 
-void	*ft_memcpy(void *dst, void const *src, size_t n)
+void	ft_memcpy(wchar_t *dst, wchar_t *src, size_t n)
 {
-	char	*dst1;
-	char	*src1;
-
-	dst1 = (char*)dst;
-	src1 = (char*)src;
-	if (n & 1)
+	while (n > 0)
 	{
-		dst1[0] = src1[0];
-		dst1 += 1;
-		src1 += 1;
+		n -= 1;
+		dst[n] = src[n];
 	}
-	n /= 2;
-	while (n--)
-	{
-		dst1[0] = src1[0];
-		dst1[1] = src1[1];
-		dst1 += 2;
-		src1 += 2;
-	}
-	return (dst);
+	dst[0] = src[0];
 }

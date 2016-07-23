@@ -1,13 +1,19 @@
 #include "ft_printf.h"
 
-void	*ft_realloc(void *ptr, size_t size_copy, size_t size_add)
+wchar_t	*ft_realloc(wchar_t *ptr, size_t size_copy, size_t size_new, wchar_t c)
 {
-	void	*new_ptr;
+	wchar_t	*new_ptr;
+	size_t	i;
+	size_t	j;
 
-	new_ptr = (void *)malloc(size_add + size_copy);
-	if (new_ptr == NULL)
+	if ((new_ptr = (wchar_t *)malloc(sizeof(wchar_t) * (size_new + 1))) == NULL)
 		return (NULL);
-	new_ptr = ft_memcpy(new_ptr, ptr, size_copy);
+	i = 0;
+	j = size_new - size_copy;
+	while (i < j)
+		new_ptr[i++] = c;
+	ft_memcpy(new_ptr + j, ptr, size_copy);
+	new_ptr[size_new] = '\0';
 	free(ptr);
 	return (new_ptr);
 }

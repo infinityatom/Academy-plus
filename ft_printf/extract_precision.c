@@ -17,5 +17,5 @@ int		extract_precision(char *ptr, t_arg *arg)
 		i++;
 	}
 	arg->precision = precision;
-	return (i);
+	return (i + 1);
 }
