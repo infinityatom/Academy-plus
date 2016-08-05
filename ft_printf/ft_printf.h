@@ -19,6 +19,7 @@ typedef struct	s_arg
 	wchar_t		*specifier;
 	size_t		len;
 	char		type;
+	bool		neg;
 	enum {
 		null,
 		hh,

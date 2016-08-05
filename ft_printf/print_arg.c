@@ -1,43 +1,35 @@
 #include "ft_printf.h"
 #include <unistd.h>
 
-/*
-static void	flags()
+wchar_t		*mallocwchar(size_t n, wchar_t c)
 {
-	if (arg->left_justify && (arg->type == ''))
-	if (arg->positive && (arg->type == ''))
-	if (arg->space && (arg->type == ''))
-	if (arg->hastag && (arg->type == ''))
-	if (arg->zero && (arg->type == ''))
+	wchar_t		*ptr;
+	size_t		i;
+
+	ptr = (wchar_t *)malloc(sizeof(wchar_t) * (n + 1));
+	i = 0;
+	while (i < n)
+		ptr[i++] = c;
+	ptr[i] = '\0';
+	return (ptr);
 }
-*/
-/*
-static void		process_left_justify(t_arg *arg, wchar_t *print, int len)
+
+static void		process_left_justify(wchar_t *print, t_arg *arg, size_t len)
 {
-	int		n;
+	size_t	n;
 
 	n = 0;
-	if (arg->left_justify == true)
-		while(len > n)
-		{
-			print[n] = arg->specifier[n];
-			n++;
-		}
-	else
+	if (arg->left_justify == false)
+		print += len - arg->len;
+	while(arg->len > n)
 	{
-		n = len - 1;
-		while(n >= 0)
-		{
-			print[n] = arg->specifier[n];
-			n--;
-		}
+		print[n] = arg->specifier[n];
+		n++;
 	}
 }
-*/
+
 static void		process_precision(t_arg *arg)
 {
-	if (arg->type == 'p' || arg->type == 'c' || arg->type == 'C')
-		return ;
 	if (arg->precision > arg->len)
 		if (arg->type == 'i' || arg->type == 'd' || arg->type == 'D' ||
 			arg->type == 'u' || arg->type == 'o' || arg->type == 'O' ||
@@ -54,6 +46,42 @@ static void		process_precision(t_arg *arg)
 		}
 }
 
+static void		process_sign(t_arg *arg)
+{
+	if (arg->neg == true)
+	{
+		arg->specifier = ft_realloc(arg->specifier, arg->len, arg->len + 1, '-');
+		arg->len += 1;
+	}
+	else if (arg->positive == true)
+	{
+		arg->specifier = ft_realloc(arg->specifier, arg->len, arg->len + 1, '+');
+		arg->len += 1;
+	}
+	else if (arg->space == true)
+	{
+		arg->specifier = ft_realloc(arg->specifier, arg->len, arg->len + 1, ' ');
+		arg->len += 1;
+	}
+}
+
+static void		process_hastag(t_arg *arg)
+{
+	if (arg->hastag == false)
+		return ;
+	if (arg->type == 'o')
+		arg->specifier = ft_realloc(arg->specifier, arg->len, arg->len + 1, '0');
+	else if (arg->type == 'x')
+	{
+		arg->specifier = ft_realloc(arg->specifier, arg->len, arg->len + 2, '0');
+		arg->specifier[1] = 'x';
+	}
+	else if (arg->type == 'X')
+	{
+		arg->specifier = ft_realloc(arg->specifier, arg->len, arg->len + 2, '0');
+		arg->specifier[1] = 'X';
+	}
+}
 
 static int	print_wchar_t(wchar_t *str)
 {
@@ -68,18 +96,16 @@ static int	print_wchar_t(wchar_t *str)
 	return (i);
 }
 
-
 int		print_arg(t_arg *arg)
 {
-/*
 	wchar_t		*print;
 	size_t		i;
 
-	i = arg->len > arg->width ? arg->len : arg->width;
-	print = (wchar_t *)malloc(sizeof(wchar_t) * (i + 1);
-	print[i] = '\0';
-
-	process_left_justify(arg, print, i);*/
 	process_precision(arg);
-	return (print_wchar_t(arg->specifier));
+	process_sign(arg);
+	process_hastag(arg);
+	i = arg->len > arg->width ? arg->len : arg->width;
+	print = mallocwchar(i, ' ');
+	process_left_justify(print, arg, i);
+	return (print_wchar_t(print));
 }

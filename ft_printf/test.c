@@ -14,7 +14,9 @@ int		main(void)
 	//int		*ptr = NULL; printf("%d\n", ft_printf("\"%p\"\n", &ptr));
 	//printf("%d\n", ft_printf("\"%c\"\n", 'h'));
 	//printf("%d\n", ft_printf("\"%C\"\n", 'h'));
-	printf("%d\n", ft_printf("\"%.3s\"\n", "2013"));
+	printf("%d\n", ft_printf("\"%-10d\"\n", 2013) - 3);
+	printf("%d\n", ft_printf("\"%-10.7d\"\n", 2013) - 3);
+	printf("%d\n", ft_printf("\"%- .7d\"\n", 2013) - 3);
 	//printf("%d\n", ft_printf("\"%D\"\n", 2013));
 
 	//printf("%0 10d\n", 69);
