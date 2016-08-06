@@ -146,27 +146,3 @@ int		print_arg(t_arg *arg)
 	process_left_justify(print, arg, i);
 	return (print_wchar_t(print));
 }
-/*
-int		print_arg(t_arg *arg)
-{
-	wchar_t		*print;
-	wchar_t		i;
-
-	i = arg->len > arg->width ? arg->len : arg->width;
-	process_precision(arg);
-	if (arg->left_justify == false && arg->zero == true)
-	{
-		if (arg->type == 'i' || arg->type == 'd' || arg->type == 'D' ||
-			arg->type == 'u' || arg->type == 'o' || arg->type == 'O' ||
-			arg->type == 'x' || arg->type == 'X')
-		{
-			print = mallocwchar(i, '0');
-		}
-	}
-	else
-	{
-		print = mallocwchar(i, ' ');
-	}
-
-}
-*/
