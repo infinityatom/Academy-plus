@@ -8,6 +8,7 @@ static int	arg_process(char **ptr, va_list *ap)
 	int		i;
 
 	arg.specifier = NULL;
+	arg.precision = NULL;
 	*ptr += extract_flags(*ptr, &arg);
 	*ptr += extract_width(*ptr, &arg);
 	*ptr += extract_precision(*ptr, &arg);

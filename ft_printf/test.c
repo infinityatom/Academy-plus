@@ -7,16 +7,18 @@
 int		main(void)
 {
 
+	printf("%d\n", ft_printf("\"%5.2s\"\n", "abc") - 3);
+
 //////////////////////////////////////////////////////////////////////
 
 	//printf("%d\n", ft_printf("\"%%\"\n"));
-	//printf("%d\n", ft_printf("\"%S\"\n", L"31132001rewrdc"));
+	//printf("%d\n", printf("\"%-20S\"\n", L"31132001rewrdc"));
 	//int		*ptr = NULL; printf("%d\n", ft_printf("\"%p\"\n", &ptr));
 	//printf("%d\n", ft_printf("\"%c\"\n", 'h'));
 	//printf("%d\n", ft_printf("\"%C\"\n", 'h'));
-	printf("%d\n", ft_printf("\"%-10d\"\n", 2013) - 3);
-	printf("%d\n", ft_printf("\"%-10.7d\"\n", 2013) - 3);
-	printf("%d\n", ft_printf("\"%- .7d\"\n", 2013) - 3);
+	//printf("%d\n", ft_printf("\"%-10d\"\n", 2013) - 3);
+	//printf("%d\n", ft_printf("\"%-10.7d\"\n", 2013) - 3);
+	//printf("%d\n", ft_printf("\"%- .7d\"\n", 2013) - 3);
 	//printf("%d\n", ft_printf("\"%D\"\n", 2013));
 
 	//printf("%0 10d\n", 69);

@@ -15,7 +15,7 @@ typedef struct	s_arg
 	bool		hastag;
 	bool		zero;
 	size_t		width;
-	size_t		precision;
+	size_t		*precision;
 	wchar_t		*specifier;
 	size_t		len;
 	char		type;

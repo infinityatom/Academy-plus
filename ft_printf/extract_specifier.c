@@ -27,10 +27,15 @@ static int	extract_specifier_uox(t_arg *arg, va_list *ap, char *ptr)
 	a = 'a';
 	if (*ptr == 'o' || *ptr == 'O')
 		i = 8;
-	if (*ptr == 'x' || *ptr == 'X')
+	else if (*ptr == 'X')
 	{
 		i = 16;
 		a = 'A';
+	}
+	else if (*ptr == 'x')
+	{
+		i = 16;
+		a = 'a';
 	}
 	if (arg->length == hh || arg->length == h)
 		return (handle_uint(arg, va_arg(*ap, unsigned int), i, a));

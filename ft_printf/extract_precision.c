@@ -10,12 +10,16 @@ int		extract_precision(char *ptr, t_arg *arg)
 	i = 0;
 	precision = 0;
 	ptr += 1;
-	while (ptr[i] <= '9' && ptr[i] >= '0')
+	if (*ptr <= '9' && *ptr >= '0')
 	{
-		precision *= 10;
-		precision += ptr[i] - '0';
-		i++;
+		arg->precision = (size_t *)malloc(sizeof(size_t));
+		while (ptr[i] <= '9' && ptr[i] >= '0')
+		{
+			precision *= 10;
+			precision += ptr[i] - '0';
+			i++;
+		}
+		*arg->precision = precision;
 	}
-	arg->precision = precision;
 	return (i + 1);
 }
