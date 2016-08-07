@@ -1,28 +1,26 @@
-#include "mylib.h"
-#include <stdarg.h>
+#include "ft_printf.h"
 #include <unistd.h>
-
-static int	ft_putchar(char const c)
-{
-	write(1, &c, 1);
-	return (1);
-}
+#include <stdio.h>
 
 static int	arg_process(char **ptr, va_list *ap)
 {
-	*ptr += 1;
-	if (**ptr == 'c')
-		return (ft_putchar(va_arg(*ap, int)));
-	if (**ptr == 's')
-		return (ft_putstr(va_arg(*ap, char *)));
-	if (**ptr == 'd')
-		return (ft_putnbr(va_arg(*ap, int)));
-	if (**ptr == 'f')
-		return (ft_putfloat(va_arg(*ap, double)));
+	t_arg	arg = {};
+	int		i;
+
+	arg.specifier = NULL;
+	arg.precision = NULL;
+	*ptr += extract_flags(*ptr, &arg);
+	*ptr += extract_width(*ptr, &arg);
+	*ptr += extract_precision(*ptr, &arg);
+	*ptr += extract_length(*ptr, &arg);
 	if (**ptr == '%')
-		return (ft_putchar('%'));
-	*ptr -= 1;
-	return (0);
+		return (write(1, *ptr, 1));
+	arg.len = extract_specifier(*ptr, &arg, ap);
+	if (arg.len == 0)
+		return (0);
+	i = print_arg(&arg);
+	free(arg.specifier);
+	return (i);
 }
 
 static int	analyse(char const *format, va_list *ap)
@@ -38,7 +36,7 @@ static int	analyse(char const *format, va_list *ap)
 	{
 		if (*ptr2 == '%')
 		{
-			write(1, ptr1, ptr2 - ptr1);
+			write(1, ptr1, ptr2++ - ptr1);
 			len += arg_process(&ptr2, ap);
 			ptr1 = ++ptr2;
 		}

@@ -1,16 +1,13 @@
-NAME = mylib.a
-
-FLAGS = -Wall -Wextra -Werror
+NAME 	= mylib.a
+FLAGS 	= -Wall -Wextra -Werror
 
 SRC =				\
 	ft_ftoa.c		\
 	ft_itoa.c		\
-	ft_memcpy.c		\
 	ft_printf.c		\
 	ft_putfloat.c	\
 	ft_putnbr.c		\
 	ft_putstr.c		\
-	ft_realloc.c	\
 	ft_strlen.c
 
 OBJ = $(SRC:.c=.o)
@@ -28,9 +25,11 @@ clean:
 fclean:	clean
 		@rm -f $(NAME)
 
-test: all
-		@gcc -I. -o test test.c mylib.a
+test:
 		@make fclean
+		@make all
+		@gcc -I. -o test test.c $(NAME)
+		@make clean
 		@./test
 		@rm test
 

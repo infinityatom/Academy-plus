@@ -1,6 +1,9 @@
-NAME = libmyGL.a
-
+NAME = myGL.a
 FLAGS = -Wall -Wextra -Werror
+
+#other libraries
+DIR		= myLib
+LIB		= myLib/mylib.a
 
 SRC =					\
 	v3_operations_1.c	\
@@ -25,3 +28,22 @@ fclean:	clean
 		@rm -f $(NAME)
 
 re:	fclean all
+
+reall:
+		@make -C $(DIR) fclean
+		@make fclean
+		@make -C $(DIR) all
+		@make all
+		@gcc -I. -o test test.c $(NAME) $(LIB)
+		@make -C $(DIR) clean
+		@make clean
+		@./test
+		@rm test
+
+test: re
+		@gcc -I. -o test test.c $(NAME) $(LIB)
+		@./test
+		@rm test
+
+cleantest: test
+		@make fclean
