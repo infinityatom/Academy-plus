@@ -1,6 +1,5 @@
 #include "vector3.h"
-#include <unistd.h>
-#include <stdio.h>
+#include "myLib/mylib.h"
 
 v3float		vector3_length(const vector3 *a)
 {
@@ -14,7 +13,7 @@ vector3		*vector3_normalize(vector3 *a)
 	normalizeLength = vector3_length(a);
 	if(normalizeLength <= EPSILON)
 	{
-		write(1, "cannot normalize degenerate vector3\n", 36);
+		ft_putstr("Cannot normalize degenerate vector3\n");
 		return (a);
 	}
 	vector3_divide(a, a, normalizeLength);
@@ -31,5 +30,5 @@ vector3		*vector3_invert(vector3 *dest, const vector3 *v)
 
 void		vector3_print(const vector3 *v)
 {
-	printf("%.2f %.2f %.2f\n", v->x, v->y, v->z);
+	ft_printf("%f %f %f\n", v->x, v->y, v->z);
 }

@@ -1,6 +1,5 @@
-NAME = mylib.a
-
-FLAGS = -Wall -Wextra -Werror
+NAME 	= mylib.a
+FLAGS 	= -Wall -Wextra -Werror
 
 SRC =				\
 	ft_ftoa.c		\
@@ -29,7 +28,7 @@ fclean:	clean
 test:
 		@make fclean
 		@make all
-		@gcc -I. -o test test.c mylib.a
+		@gcc -I. -o test test.c $(NAME)
 		@make clean
 		@./test
 		@rm test
