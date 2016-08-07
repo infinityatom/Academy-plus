@@ -6,6 +6,7 @@ DIR		= myLib
 LIB		= myLib/mylib.a
 
 SRC =					\
+	color_creations.c	\
 	v3_operations_1.c	\
 	v3_operations_2.c	\
 	v3_combinations.c	\
@@ -29,7 +30,7 @@ fclean:	clean
 
 re:	fclean all
 
-reall:
+cleantest:
 		@make -C $(DIR) fclean
 		@make fclean
 		@make -C $(DIR) all
@@ -44,9 +45,6 @@ test: re
 		@gcc -I. -o test test.c $(NAME) $(LIB)
 		@./test
 		@rm test
-
-cleantest: test
-		@make fclean
 
 cleanall: fclean
 		@make -C $(DIR) fclean

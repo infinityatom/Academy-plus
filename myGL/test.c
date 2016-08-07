@@ -1,4 +1,4 @@
-#include "vector3.h"
+#include "myGL.h"
 #include "myLib/mylib.h"
 
 int		main(void)
