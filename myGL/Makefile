@@ -47,3 +47,6 @@ test: re
 
 cleantest: test
 		@make fclean
+
+cleanall: fclean
+		@make -C $(DIR) fclean
