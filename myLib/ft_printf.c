@@ -19,6 +19,8 @@ static int	arg_process(char **ptr, va_list *ap)
 		return (ft_putnbr(va_arg(*ap, int)));
 	if (**ptr == 'f')
 		return (ft_putfloat(va_arg(*ap, double)));
+	if (**ptr == '%')
+		return (ft_putchar('%'));
 	*ptr -= 1;
 	return (0);
 }
