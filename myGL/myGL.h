@@ -29,7 +29,7 @@ typedef struct	s_mesh {
 }				mesh;
 
 typedef struct	s_material {
-	color		color;
+	rgba		color;
 }				material;
 
 rgba	new_rgba(value r, value g, value b, value a);

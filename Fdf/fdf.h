@@ -20,9 +20,13 @@
 # include <fcntl.h>
 # include <math.h>
 
-# include "Libft/libft.h"
-# include "myGL/myGL.h"
+typedef struct	s_matrix
+{
+	long		**array;
+	size_t		x;
+	size_t		y;
+}				matrix;
 
-int				**ft_read_file(char *argv, int **matrix);
+matrix			*ft_read_file(char *argv);
 
 #endif

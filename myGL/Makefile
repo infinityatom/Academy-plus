@@ -30,13 +30,11 @@ fclean:	clean
 
 re:	fclean all
 
-cleantest:
-		@make -C $(DIR) fclean
-		@make fclean
-		@make -C $(DIR) all
-		@make all
+cleantest: fclean all
+		@for dir in $(DIR); do (make -C ../$$dir fclean); done
+		@for dir in $(DIR); do (make -C ../$$dir all); done
 		@gcc -I. -o test test.c $(NAME) $(LIB)
-		@make -C $(DIR) clean
+		@for dir in $(DIR); do (make -C ../$$dir clean); done
 		@make clean
 		@./test
 		@rm test
