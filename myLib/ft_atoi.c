@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 int		ft_atoi(char *str)
 {
 	int		nr;
@@ -13,7 +15,7 @@ int		ft_atoi(char *str)
 	while (*str >= '0' && *str <= '9')
 	{
 		nr *= 10;
-		nr += *str;
+		nr += *str - '0';
 		str += 1;
 	}
 	nr *= neg;

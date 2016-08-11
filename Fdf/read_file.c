@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <unistd.h>
+#include <fcntl.h>
 #include "fdf.h"
 #include "myLib/myLib.h"
 #include "myGL/myGL.h"
@@ -50,15 +51,17 @@ void		extract_vectors(int *array, rgb *color, char *line)
 			array[i] = ft_atoi(line);
 			while (*line >= '0' && *line <= '9')
 				line += 1;
-		}
-		if (*line == ',')
-		{
-			line += 3;
-			color[i] = str_to_rgb(line);
-			line += 6;
+			if (*line == ',')
+			{
+				line += 3;
+				color[i] = str_to_rgb(line);
+				line += 6;
+			}
+			else
+				color[i] = 0;
+			i += 1;
 		}
 		line += 1;
-		i += 1;
 	}
 }
 
@@ -91,7 +94,7 @@ t_matrix	*ft_read_file(char *argv)
 
 	if ((fd = open(argv, O_RDONLY)) == -1)
 		return (NULL);
-	if (get_next_line(fd, &line, 100) == -1)
+	if (get_next_line(fd, &line) == -1)
 		return (NULL);
 	if (!(matrix = (t_matrix *)malloc(sizeof(t_matrix))))
 		return (NULL);
@@ -103,13 +106,13 @@ t_matrix	*ft_read_file(char *argv)
 	*matrix->color = (rgb *)malloc(sizeof(rgb) * matrix->x);
 	extract_vectors(*matrix->array, *matrix->color, line);
 	matrix->y = 1;
-	while (get_next_line(fd, &line, 100) == 1)
+	while (get_next_line(fd, &line) == 1)
 	{
 		matrix->array[matrix->y] = (int *)malloc(sizeof(int) * matrix->x);
-		matrix->array[matrix->y] = (int *)malloc(sizeof(int) * matrix->x);
+		matrix->color[matrix->y] = (rgb *)malloc(sizeof(rgb) * matrix->x);
 		extract_vectors(matrix->array[matrix->y], matrix->color[matrix->y], line);
 		matrix->y += 1;
-		if (size == matrix->y)
+		if (matrix->y == size)
 		{
 			size += 50;
 			ct_realloci(matrix->array, matrix->y, size);

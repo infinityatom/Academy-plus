@@ -12,31 +12,12 @@ int		main(int argc, char **argv)
 		perror("Error: ");
 		return (-1);
 	}
-	printf("%d\n", matrix->array[0][1]);
 	for (int y = 0; y < matrix->y; y++)
 	{
 		for (int x = 0; x < matrix->x; x++)
-			printf("%d", matrix->array[y][x]);
+			printf("%-3d", matrix->array[y][x]);
 		printf("\n");
 	}
+	printf("x = %zu\ny = %zu\n", matrix->x, matrix->y);
 	return (0);
 }
-48
-0
-48
-0
-48
-0
-48
-0
-48
-0
-48
-0
-48
-0
-48
-0
-48
-0
-48
