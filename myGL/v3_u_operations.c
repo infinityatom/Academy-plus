@@ -1,5 +1,5 @@
 #include "vector3.h"
-#include "myLib/mylib.h"
+#include "myLib/myLib.h"
 
 v3float		vector3_length(const vector3 *a)
 {

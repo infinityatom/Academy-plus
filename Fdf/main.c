@@ -3,7 +3,7 @@
 
 int		main(int argc, char **argv)
 {
-	matrix	*matrix;
+	t_matrix	*matrix;
 
 	if (argc != 2)
 		return (0);
@@ -12,5 +12,31 @@ int		main(int argc, char **argv)
 		perror("Error: ");
 		return (-1);
 	}
+	printf("%d\n", matrix->array[0][1]);
+	for (int y = 0; y < matrix->y; y++)
+	{
+		for (int x = 0; x < matrix->x; x++)
+			printf("%d", matrix->array[y][x]);
+		printf("\n");
+	}
 	return (0);
 }
+48
+0
+48
+0
+48
+0
+48
+0
+48
+0
+48
+0
+48
+0
+48
+0
+48
+0
+48

@@ -34,5 +34,7 @@ typedef struct	s_material {
 
 rgba	new_rgba(value r, value g, value b, value a);
 rgb		new_rgb(value r, value g, value b);
+rgba	str_to_rgba(char *str);
+rgb		str_to_rgb(char *str);
 
 #endif

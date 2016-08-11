@@ -1,4 +1,4 @@
-#include "mylib.h"
+#include "myLib.h"
 #include <unistd.h>
 
 static int	ft_malloc_again(char **save, size_t buff_size)

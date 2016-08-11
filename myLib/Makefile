@@ -2,6 +2,7 @@ NAME 	= mylib.a
 FLAGS 	= -Wall -Wextra -Werror
 
 SRC =				\
+	ft_atoi.c		\
 	ft_ftoa.c		\
 	ft_itoa.c		\
 	ft_memchr.c		\

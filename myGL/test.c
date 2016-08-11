@@ -1,5 +1,5 @@
 #include "myGL.h"
-#include "myLib/mylib.h"
+#include "myLib/myLib.h"
 
 int		main(void)
 {

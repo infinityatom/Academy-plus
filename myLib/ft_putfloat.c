@@ -1,4 +1,4 @@
-#include "mylib.h"
+#include "myLib.h"
 
 int		ft_putfloat(float fl)
 {

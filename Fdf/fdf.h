@@ -19,14 +19,16 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <math.h>
+# include "myGL/myGL.h"
 
 typedef struct	s_matrix
 {
-	long		**array;
+	int			**array;
+	rgb			**color;
 	size_t		x;
 	size_t		y;
-}				matrix;
+}				t_matrix;
 
-matrix			*ft_read_file(char *argv);
+t_matrix		*ft_read_file(char *argv);
 
 #endif

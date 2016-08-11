@@ -3,6 +3,9 @@
 
 # include <stdlib.h>
 
+typedef enum { false = 0, true = 1 } bool;
+
+int		ft_atoi(char *str);
 char	*ft_ftoa(float fl, int afterpoint);
 char	*ft_itoa(int n);
 void	*ft_memchr(const void *s, int c, size_t n);
