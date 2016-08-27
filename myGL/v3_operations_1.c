@@ -1,6 +1,6 @@
 #include "vector3.h"
 
-vector3	*vector3_add(vector3 *dest, const vector3 *v1, const vector3 *v2)
+t_vector3	*vector3_add(t_vector3 *dest, const t_vector3 *v1, const t_vector3 *v2)
 {
 	dest->x = v1->x + v2->x;
 	dest->y = v1->y + v2->y;
@@ -8,7 +8,7 @@ vector3	*vector3_add(vector3 *dest, const vector3 *v1, const vector3 *v2)
 	return (dest);
 }
 
-vector3	*vector3_subtract(vector3 *dest, const vector3 *min, const vector3 *sub)
+t_vector3	*vector3_subtract(t_vector3 *dest, const t_vector3 *min, const t_vector3 *sub)
 {
 	dest->x = min->x - sub->x;
 	dest->y = min->y - sub->y;
@@ -16,7 +16,7 @@ vector3	*vector3_subtract(vector3 *dest, const vector3 *min, const vector3 *sub)
 	return (dest);
 }
 
-vector3	*vector3_multiply(vector3 *dest, const vector3 *v, const v3float n)
+t_vector3	*vector3_multiply(t_vector3 *dest, const t_vector3 *v, const t_v3float n)
 {
 	dest->x = v->x * n;
 	dest->y = v->y * n;
@@ -24,7 +24,7 @@ vector3	*vector3_multiply(vector3 *dest, const vector3 *v, const v3float n)
 	return (dest);
 }
 
-vector3	*vector3_divide(vector3 *dest, const vector3 *v, const  v3float n)
+t_vector3	*vector3_divide(t_vector3 *dest, const t_vector3 *v, const  t_v3float n)
 {
 	dest->x = v->x / n;
 	dest->y = v->y / n;

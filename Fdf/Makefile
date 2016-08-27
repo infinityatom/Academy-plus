@@ -47,6 +47,7 @@ test: re
 		@make clean
 		@./fdf $(FILE_PATH)$(FILE)
 		@rm fdf
+		@rm fdf.a
 
 cleanall: fclean
 		@for dir in $(DIR); do (make -C ../$$dir fclean); done

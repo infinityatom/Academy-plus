@@ -1,14 +1,14 @@
 #include "vector3.h"
 #include "myLib/myLib.h"
 
-v3float		vector3_length(const vector3 *a)
+t_v3float		vector3_length(const t_vector3 *a)
 {
 	return (sqrt(a->x*a->x + a->y*a->y + a->z*a->z));
 }
 
-vector3		*vector3_normalize(vector3 *a)
+t_vector3		*vector3_normalize(t_vector3 *a)
 {
-	v3float normalizeLength;
+	t_v3float	normalizeLength;
 
 	normalizeLength = vector3_length(a);
 	if(normalizeLength <= EPSILON)
@@ -20,7 +20,7 @@ vector3		*vector3_normalize(vector3 *a)
 	return (a);
 }
 
-vector3		*vector3_invert(vector3 *dest, const vector3 *v)
+t_vector3		*vector3_invert(t_vector3 *dest, const t_vector3 *v)
 {
 	dest->x = -v->x;
 	dest->y = -v->y;
@@ -28,7 +28,7 @@ vector3		*vector3_invert(vector3 *dest, const vector3 *v)
 	return (dest);
 }
 
-void		vector3_print(const vector3 *v)
+void		vector3_print(const t_vector3 *v)
 {
 	ft_printf("%f %f %f\n", v->x, v->y, v->z);
 }

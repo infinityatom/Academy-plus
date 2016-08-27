@@ -1,36 +1,26 @@
 #include "vector3.h"
 #include <stdlib.h>
 
-vector3	*vector3_copy(vector3 *dest, const vector3 *source)
+t_vector3	*new_vector3(t_v3float x, t_v3float y, t_v3float z)
 {
-	dest->x = source->x;
-	dest->y = source->y;
-	dest->z = source->z;
-	return (dest);
-}
+	t_vector3	*v;
 
-vector3	*vector3_random(vector3 *v)
-{
-	do {
-		v->x = (double)rand()/RAND_MAX*2-1;
-		v->y = (double)rand()/RAND_MAX*2-1;
-		v->z = (double)rand()/RAND_MAX*2-1;
-	} while (v->x*v->x + v->y*v->y + v->z*v->z > 1.0);
-	return (v);
-}
-
-vector3	*vector3_make3f(vector3 *v, v3float x, v3float y, v3float z)
-{
+	if (!(v = (t_vector3 *)malloc(sizeof(t_vector3))))
+		return (NULL);
 	v->x = x;
 	v->y = y;
 	v->z = z;
 	return (v);
 }
 
-vector3	*vector3_make2v(vector3 *v, const vector3 *to, const vector3 *from)
+t_vector3	vector3_make_between(const t_vector3 *to, const t_vector3 *from)
 {
-	v->x = to->x - from->x;
-	v->y = to->y - from->y;
-	v->z = to->z - from->z;
-	return (v);
+	return ((t_vector3){to->x - from->x, to->y - from->y, to->z - from->z});
+}
+
+void		vector3_copy(t_vector3 *dest, const t_vector3 *source)
+{
+	dest->x = source->x;
+	dest->y = source->y;
+	dest->z = source->z;
 }
