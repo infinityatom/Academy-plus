@@ -15,23 +15,23 @@ t_mesh	*matrix_to_mesh(t_matrix *m)
 	if (!(mesh->vert = (t_vector3 *)malloc(sizeof(t_vector3) * mesh->vert_nr)))
 		return (NULL);
 	i = 0;
-	printf("%llu\n", mesh->vert_nr);
+	//printf("%llu\n", mesh->vert_nr);
 	while (i < m->y)
 	{
 		j = 0;
 		x = i * (m->x - 1) * 2;
 		while (j < m->x - 1)
 		{
-			mesh->vert[x + (2 * j)] = (t_vector3){j, (t_v3float)(m->y - i - 1), m->array[i][j]};
-			mesh->vert[x + (2 * j)+1]=(t_vector3){j + 1, (t_v3float)(m->y - i - 1), m->array[i][j + 1]};
-			printf("(%-2.0f->", mesh->vert[x + (2 * j)].z);
-			printf("%-2.0f) ", mesh->vert[x + (2 * j) + 1].z);
+			mesh->vert[x+(2*j)]=(t_vector3){j,(t_v3float)(m->y-i-1),m->array[i][j]};
+			mesh->vert[x+(2*j)+1]=(t_vector3){j+1,(t_v3float)(m->y-i-1),m->array[i][j+1]};
+			//printf("(%-2.0f->", mesh->vert[x + (2 * j)].z);
+			//printf("%-2.0f) ", mesh->vert[x + (2 * j) + 1].z);
 			j += 1;
 		}
-		printf("\n");
+		//printf("\n");
 		i += 1;
 	}
-	printf("\n");
+	//printf("\n");
 	mesh->primitive = gl_lines;
 	return (mesh);
 }

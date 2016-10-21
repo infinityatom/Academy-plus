@@ -48,7 +48,7 @@ void		extract_vectors(int *array, rgb *color, char *line)
 	{
 		if (*line >= '0' && *line <= '9')
 		{
-			array[i] = ft_atoi(line);
+			array[i] = ft_atoi(line) / 10;
 			while (*line >= '0' && *line <= '9')
 				line += 1;
 			if (*line == ',')
